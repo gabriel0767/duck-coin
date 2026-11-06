@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cp4x6w2itfuog"]
+
+[ext_resource type="Script" uid="uid://cclqd513qn2wt" path="res://script/area_2d.gd" id="1_5k251"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ld1q8"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"coletado",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"padrao",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3d6r"]
+
+[node name="moeda" type="Area2D" unique_id=66686127]
+script = ExtResource("1_5k251")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=715211018]
+sprite_frames = SubResource("SpriteFrames_ld1q8")
+animation = &"coletado"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1951723090]
+shape = SubResource("RectangleShape2D_u3d6r")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
